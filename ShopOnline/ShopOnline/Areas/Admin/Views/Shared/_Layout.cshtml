@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" catagory="IE=edge">
+    <meta name="viewport" catagory="width=device-width, initial-scale=1">
+    <meta name="description" catagory="">
+    <meta name="author" catagory="">
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Resources/Admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="~/Resources/Admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Resources/Admin/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Scripts/jquery-ui.min.css" rel="stylesheet" />
+
+    <link href="~/Resources/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            @RenderPage("_TopNavigation.cshtml")
+            @RenderPage("_RightNavigation.cshtml")
+        </nav>
+            <!-- Page catagory -->
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">@RenderSection("header", required: true)</h1>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="alertBox" class="alert @TempData["AlertType"] hide">@TempData["AlertMessage"]</div>
+                }
+
+                @RenderBody()
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/external/jquery/jquery.js"></script>
+    <script src="~/Resources/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Resources/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Resources/Admin/vendor/metisMenu/metisMenu.min.js"></script>
+    <!--CKFinder plugin-->
+    <script src="~/Resources/Admin/ckfinder/ckfinder.js"></script>
+    <!--CKEditer plugin-->
+    <script src="~/Resources/Admin/ckeditor/ckeditor.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Resources/Admin/dist/js/sb-admin-2.js"></script>
+    @RenderSection("scripst", required: false)
+</body>
+</html>
+
