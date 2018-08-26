@@ -86,6 +86,11 @@ namespace Model.DAO
             return result;
         }
 
+        public List<ProductCatagory> GetAllCatagories()
+        {
+            return onlineShopDbContext.ProductCatagories.Where(x=>x.Status==true).OrderBy(x=>x.DisplayOrder).ToList();
+        }
+
         public IEnumerable<ProductCatagory> ListAllPagingProductCatagory(string searchString, int page, int pageSize)
         {
             IQueryable<ProductCatagory> model = onlineShopDbContext.ProductCatagories;

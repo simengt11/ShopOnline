@@ -113,5 +113,6 @@ namespace ShopOnline.Areas.Admin.Controllers
             SetAlert("Delete the Product Catagory sucessful!", "success");
             return RedirectToAction("Index", "ProductCatagory");
         }
+
     }
 }

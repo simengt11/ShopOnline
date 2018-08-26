@@ -60,6 +60,7 @@
     <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\ProductCatagoryDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
+    <Compile Include="DAO\SlideDAO.cs" />
     <Compile Include="EF\About.cs" />
     <Compile Include="EF\Catagory.cs" />
     <Compile Include="EF\Contact.cs" />

@@ -14,6 +14,12 @@ namespace Model.EF
         [StringLength(250)]
         public string Image { get; set; }
 
+        [StringLength(100)]
+        public string FirstTitle { get; set; }
+
+        [StringLength(250)]
+        public string SecondTitle { get; set; }
+
         public int? DisplayOrder { get; set; }
 
         [StringLength(250)]
@@ -35,6 +41,6 @@ namespace Model.EF
         [StringLength(250)]
         public string MetaKeywords { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }

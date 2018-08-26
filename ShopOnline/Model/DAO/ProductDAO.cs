@@ -119,6 +119,18 @@ namespace Model.DAO
             onlineShopDbContext.SaveChanges();
             return !product.IncludeVAT;
         }
+
+        public List<Product> GetNewProducts(int top)
+        {
+            var result = onlineShopDbContext.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+            return result;
+        }
+
+        public List<Product> GetFeatureProducts(int top)
+        {
+            var result = onlineShopDbContext.Products.OrderByDescending(x => x.ViewCount).Take(top).ToList();
+            return result;
+        }
     }
 }
 
