@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DAO\ContentCatagoryDAO.cs" />
     <Compile Include="DAO\ContentDAO.cs" />
+    <Compile Include="DAO\FeedbackDAO.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\ProductCatagoryDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />

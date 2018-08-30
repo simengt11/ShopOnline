@@ -11,15 +11,19 @@ namespace Model.EF
     {
         public int ID { get; set; }
 
+        [Required(ErrorMessage ="Please enter your name!")]
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Please enter your phone!")]
         [StringLength(50)]
-        public string Phone { get; set; }
 
+        public string Phone { get; set; }
         [StringLength(50)]
+
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "Please enter your content!")]
         [StringLength(250)]
         public string Content { get; set; }
 

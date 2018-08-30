@@ -174,7 +174,11 @@
     <Compile Include="Commond\CommondConstant.cs" />
     <Compile Include="Commond\Encryptor.cs" />
     <Compile Include="Commond\UserSession.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1263,10 +1267,31 @@
     <Content Include="Resources\Admin\vendor\morrisjs\morris.min.js" />
     <Content Include="Resources\Admin\vendor\raphael\raphael.js" />
     <Content Include="Resources\Admin\vendor\raphael\raphael.min.js" />
+    <Content Include="Resources\Client\css\all.css" />
+    <Content Include="Resources\Client\css\all.min.css" />
+    <Content Include="Resources\Client\css\bootstrap-grid.css" />
+    <Content Include="Resources\Client\css\bootstrap-grid.min.css" />
+    <Content Include="Resources\Client\css\bootstrap-reboot.css" />
+    <Content Include="Resources\Client\css\bootstrap-reboot.min.css" />
+    <Content Include="Resources\Client\css\bootstrap.css" />
+    <Content Include="Resources\Client\css\bootstrap.min.css" />
+    <Content Include="Resources\Client\css\brands.css" />
+    <Content Include="Resources\Client\css\brands.min.css" />
     <Content Include="Resources\Client\css\easy-responsive-tabs.css" />
+    <Content Include="Resources\Client\css\fontawesome.css" />
+    <Content Include="Resources\Client\css\fontawesome.min.css" />
     <Content Include="Resources\Client\css\global.css" />
+    <Content Include="Resources\Client\css\regular.css" />
+    <Content Include="Resources\Client\css\regular.min.css" />
     <Content Include="Resources\Client\css\slider.css" />
+    <Content Include="Resources\Client\css\solid.css" />
+    <Content Include="Resources\Client\css\solid.min.css" />
     <Content Include="Resources\Client\css\style.css" />
+    <Content Include="Resources\Client\css\StyleSheet1.css" />
+    <Content Include="Resources\Client\css\svg-with-js.css" />
+    <Content Include="Resources\Client\css\svg-with-js.min.css" />
+    <Content Include="Resources\Client\css\v4-shims.css" />
+    <Content Include="Resources\Client\css\v4-shims.min.css" />
     <Content Include="Resources\Client\images\about_img.jpg" />
     <Content Include="Resources\Client\images\arrow-next.png" />
     <Content Include="Resources\Client\images\arrow-prev.png" />
@@ -1317,6 +1342,10 @@
     <Content Include="Resources\Client\images\twitter.png" />
     <Content Include="Resources\Client\images\value-rating.png" />
     <Content Include="Resources\Client\images\wishlist.png" />
+    <Content Include="Resources\Client\js\bootstrap.bundle.js" />
+    <Content Include="Resources\Client\js\bootstrap.bundle.min.js" />
+    <Content Include="Resources\Client\js\bootstrap.js" />
+    <Content Include="Resources\Client\js\bootstrap.min.js" />
     <Content Include="Resources\Client\js\easing.js" />
     <Content Include="Resources\Client\js\easyResponsiveTabs.js" />
     <Content Include="Resources\Client\js\jquery-1.7.2.min.js" />
@@ -1326,6 +1355,16 @@
     <Content Include="Resources\Client\js\script.js" />
     <Content Include="Resources\Client\js\slides.min.jquery.js" />
     <Content Include="Resources\Client\js\startstop-slider.js" />
+    <Content Include="Resources\Client\metisMenu\metisMenu.css" />
+    <Content Include="Resources\Client\metisMenu\metisMenu.js" />
+    <Content Include="Resources\Client\metisMenu\metisMenu.min.css" />
+    <Content Include="Resources\Client\metisMenu\metisMenu.min.js" />
+    <Content Include="Resources\Client\morrisjs\morris.css" />
+    <Content Include="Resources\Client\morrisjs\morris.js" />
+    <Content Include="Resources\Client\morrisjs\morris.min.js" />
+    <Content Include="Resources\Client\webfonts\fa-brands-400.svg" />
+    <Content Include="Resources\Client\webfonts\fa-regular-400.svg" />
+    <Content Include="Resources\Client\webfonts\fa-solid-900.svg" />
     <Content Include="Scripts\AUTHORS.txt" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1452,6 +1491,28 @@
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
+    <Content Include="Resources\Client\css\bootstrap-grid.css.map" />
+    <Content Include="Resources\Client\css\bootstrap-grid.min.css.map" />
+    <Content Include="Resources\Client\css\bootstrap-reboot.css.map" />
+    <Content Include="Resources\Client\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Resources\Client\css\bootstrap.css.map" />
+    <Content Include="Resources\Client\css\bootstrap.min.css.map" />
+    <Content Include="Resources\Client\js\bootstrap.bundle.js.map" />
+    <Content Include="Resources\Client\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Resources\Client\js\bootstrap.js.map" />
+    <Content Include="Resources\Client\js\bootstrap.min.js.map" />
+    <Content Include="Resources\Client\webfonts\fa-brands-400.eot" />
+    <Content Include="Resources\Client\webfonts\fa-brands-400.ttf" />
+    <Content Include="Resources\Client\webfonts\fa-brands-400.woff" />
+    <Content Include="Resources\Client\webfonts\fa-brands-400.woff2" />
+    <Content Include="Resources\Client\webfonts\fa-regular-400.eot" />
+    <Content Include="Resources\Client\webfonts\fa-regular-400.ttf" />
+    <Content Include="Resources\Client\webfonts\fa-regular-400.woff" />
+    <Content Include="Resources\Client\webfonts\fa-regular-400.woff2" />
+    <Content Include="Resources\Client\webfonts\fa-solid-900.eot" />
+    <Content Include="Resources\Client\webfonts\fa-solid-900.ttf" />
+    <Content Include="Resources\Client\webfonts\fa-solid-900.woff" />
+    <Content Include="Resources\Client\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controller\contentController.js" />
     <Content Include="Scripts\controller\userController.js" />
@@ -1525,12 +1586,17 @@
     <Content Include="Views\Shared\_MainMenu.cshtml" />
     <Content Include="Views\Shared\_ProductCatagories.cshtml" />
     <Content Include="Views\Shared\_Slide.cshtml" />
+    <Content Include="Views\Product\Catagory.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Delivery\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

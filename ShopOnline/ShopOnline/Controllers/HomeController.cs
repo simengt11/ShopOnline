@@ -46,5 +46,7 @@ namespace ShopOnline.Controllers
             ViewBag.ListNewProduct = dao.GetNewProducts(top);
             ViewBag.ListFeatureProduct = dao.GetFeatureProducts(top);
         }
+
+        
     }
 }

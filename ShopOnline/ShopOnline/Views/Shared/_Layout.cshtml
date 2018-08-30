@@ -12,10 +12,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="~/Resources/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Resources/Client/css/slider.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="~/Resources/Client/js/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Resources/Client/js/bootstrap.min.js"></script>
+    <link href="~/Resources/Client/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Resources/Client/css/bootstrap-grid.css" rel="stylesheet" />
+    @*<link href="~/Resources/Client/metisMenu/metisMenu.min.css" rel="stylesheet" />
+        <link href="~/Resources/Client/morrisjs/morris.css" rel="stylesheet" />*@
+    <link href="~/Resources/Client/css/fontawesome.min.css" rel="stylesheet" />
     <script type="text/javascript" src="~/Resources/Client/js/move-top.js"></script>
     <script type="text/javascript" src="~/Resources/Client/js/easing.js"></script>
     <script type="text/javascript" src="~/Resources/Client/js/startstop-slider.js"></script>
+    @RenderSection("Script", required: false)
+
+
 </head>
 <body>
     <div class="wrap">
@@ -29,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="header_top">
                 <div class="logo">
-                    <a href="index.html"><img src="~/Resources/Client/images/logo.png" alt="" /></a>
+                    <a href="/home"><img src="~/Resources/Client/images/logo.png" alt="" /></a>
                 </div>
                 <div class="cart">
                     <p>
@@ -41,35 +50,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     </p>
                 </div>
-                <script type="text/javascript">function DropDown(el) {
-				this.dd = el;
-				this.initEvents();
-			}
-			DropDown.prototype = {
-				initEvents : function() {
-					var obj = this;
+                <script type="text/javascript">
+    function DropDown(el) {
+                        this.dd = el;
+                        this.initEvents();
+                    }
+                    DropDown.prototype = {
+                        initEvents: function () {
+                            var obj = this;
 
-					obj.dd.on('click', function(event){
-						$(this).toggleClass('active');
-						event.stopPropagation();
-					});
-				}
-			}
+                            obj.dd.on('click', function (event) {
+                                $(this).toggleClass('active');
+                                event.stopPropagation();
+                            });
+                        }
+                    }
 
-			$(function() {
+                    $(function () {
 
-				var dd = new DropDown( $('#dd') );
+                        var dd = new DropDown($('#dd'));
 
-				$(document).click(function() {
-					// all dropdowns
-					$('.wrapper-dropdown-2').removeClass('active');
-				});
+                        $(document).click(function () {
+                            // all dropdowns
+                            $('.wrapper-dropdown-2').removeClass('active');
+                        });
 
-			});</script>
+                    });</script>
                 <div class="clear"></div>
             </div>
             <div class="header_bottom">
-            @{Html.RenderAction("_MainMenu", "Home");}
+                @{Html.RenderAction("_MainMenu", "Home");}
+
                 <div class="search_box">
                     <form>
                         <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
@@ -78,10 +89,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clear"></div>
             </div>
             @RenderSection("slide_header", required: false)
-         
+
         </div>
-        @RenderBody();
-        
+        @RenderBody()
+
     </div>
     <div class="footer">
         <div class="wrap">
@@ -140,10 +151,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <p>&copy; 2013 home_shoppe. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
         </div>
     </div>
-    <script type="text/javascript">$(document).ready(function() {
-			$().UItoTop({ easingType: 'easeOutQuart' });
+    <script type="text/javascript">
+    $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
 
-		});</script>
+        });</script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
 </body>
 </html>

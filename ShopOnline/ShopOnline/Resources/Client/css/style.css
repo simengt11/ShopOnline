@@ -59,6 +59,11 @@ body {
 	font-size:1em;
 	font-weight:bold;
 }
+
+span.field-validation-error.text-danger {
+    color: red;
+}
+
 .call p span.number{
 	color:#E4292F;
 	font-size:1em;

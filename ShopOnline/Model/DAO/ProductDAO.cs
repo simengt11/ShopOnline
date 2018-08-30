@@ -131,6 +131,21 @@ namespace Model.DAO
             var result = onlineShopDbContext.Products.OrderByDescending(x => x.ViewCount).Take(top).ToList();
             return result;
         }
+
+        public List<Product> GetProductByCatagoryID(long id, ref int totalRecord, int page, int pageSize)
+        {
+            
+            var result = onlineShopDbContext.Products.Where(x => x.CatalogyID == id);
+            totalRecord = result.Count();
+            return result.OrderBy(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        }
+
+        public List<Product> GetRelatedProductByCatagoryID(long catagoryID, long productID)
+        {
+            var result= onlineShopDbContext.Products.Where(x => x.CatalogyID == catagoryID && x.ID != productID);
+            return result.ToList();
+        }
+
     }
 }
 
