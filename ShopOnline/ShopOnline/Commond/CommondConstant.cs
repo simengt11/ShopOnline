@@ -8,5 +8,6 @@ namespace ShopOnline.Commond
     public static class CommondConstant
     {
         public static string USER_SESSION = "USER_SESSION";
+        public static string CART_SESSION = "CART_SESSION";
     }
 }

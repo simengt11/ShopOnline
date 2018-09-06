@@ -1,0 +1,41 @@
+﻿@model List<ShopOnline.Commond.CartSession>
+
+<div class="cart">
+    <p>
+        Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2">
+            @Model.Sum(x => x.Quanlity) item(s)
+            <ul class="dropdown">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <li class="clearfix">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="@item.product.Image" alt="@item.product.MetaTtile" width="50" height="50" />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="item-name"><b>Name:</b> @item.product.Name</span><br />
+                                        <span class="item-price"><b>Price:</b> $@(item.product.Price * item.Quanlity)</span><br />
+                                        <span class="item-quantity"><b>Quanlity:</b> @item.Quanlity</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button id="btnDelete" class="btn btn danger"><i class="fa fa-trash-o"></i></button>
+                                </div>
+                            </div>
+                        </li>
+                        <hr />
+                    }
+                    <li><a href="/cart/" class="btn btn-success btn-block">Check your cart></a></li>
+                }
+                else
+                {
+                    <li><span>Have no item in your cart</span></li>
+                }
+
+            </ul>
+        </div>
+    </p>
+</div> <!--end navbar-right -->

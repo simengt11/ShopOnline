@@ -16,20 +16,13 @@ namespace Model.DAO
             onlineShopDbContext = new OnlineShopDbContext();
         }
 
-        public bool InsertProduct(Product product)
+        public long InsertProduct(Product product)
         {
             product.CreatedDate = DateTime.Now;
-            try
-            {
-                onlineShopDbContext.Products.Add(product);
-                onlineShopDbContext.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
+
+            onlineShopDbContext.Products.Add(product);
+            onlineShopDbContext.SaveChanges();
+            return product.ID;
         }
 
         public bool UpdateProduct(Product product)
@@ -140,10 +133,23 @@ namespace Model.DAO
             return result.OrderBy(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
         }
 
+        public List<Product> GetProductByName(string keyword, ref int totalRecord, int page, int pageSize)
+        {
+
+            var result = onlineShopDbContext.Products.Where(x => x.Name.Contains(keyword));
+            totalRecord = result.Count();
+            return result.OrderBy(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        }
+
         public List<Product> GetRelatedProductByCatagoryID(long catagoryID, long productID)
         {
             var result= onlineShopDbContext.Products.Where(x => x.CatalogyID == catagoryID && x.ID != productID);
             return result.ToList();
+        }
+
+        public List<string> ListProductProductName(string keyword)
+        {
+            return onlineShopDbContext.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
         }
 
     }

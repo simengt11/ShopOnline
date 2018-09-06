@@ -65,9 +65,8 @@
                                 <div class="form-group row">
                                     @Html.LabelFor(model => model.MoreImages, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-8">
-                                        @Html.TextBoxFor(model => model.MoreImages, new { @class = "form-control" })
-
-                                        @Html.ValidationMessageFor(model => model.MoreImages, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.MoreImages, new { @class = "form-control", @disabled = "disabled", @id = "txtMoreImage" })
+                                        <input id="btnChooseImage" class="btn btn-info" value="Manage more images" type="button">
                                     </div>
                                 </div>
 
@@ -183,6 +182,29 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Manage more image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="listImage">
+                </div>
+                <input id="btnChoose" type="button" class="btn btn-primary" value="Choose" />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="btnSave" type="button" class="btn btn-primary btnSave">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -206,6 +228,42 @@
                     $('#txtImage').val(url);
                 };
                 finder.popup();
+            });
+
+            $('#btnChooseImage').off('click').on('click', function () {
+                var list = $.parseJSON($('#txtMoreImage').val());
+                $.each(list, function (index, value) {
+                    $('#listImage').append('<span><img src="' + value + '" width="100 height=100"/><input type="button" class="btn btn-danger btnDel" value="X"></span>');
+
+                });
+                $('#exampleModalCenter').modal('show');
+
+            });
+
+            $('#btnChoose').off('click').on('click', function () {
+                var finder = new CKFinder();
+
+                finder.selectActionFunction = function (url) {
+                    $('#listImage').append('<span><img src="' + url + '" width="100 height=100"/><input type="button" class="btn btn-danger btnDel" value="X"></span>');
+                    $('.btnDel').off('click').on('click', function () {
+                        $(this).parent().remove();
+                    });
+                };
+
+                finder.popup();
+            });
+
+
+
+            $('#btnSave').off('click').on('click', function () {
+                list = [];
+                $.each($('#listImage img'), function (index, value) {
+                    list.push($(value).prop('src'));
+                });
+                var value = JSON.stringify(list);
+                $('#txtMoreImage').val(value);
+                $('#exampleModalCenter').modal('hide');
+
             });
         });
         window.CKEDITOR_BASEPATH = '/Resources/Admin/ckeditor/ckeditor.js';

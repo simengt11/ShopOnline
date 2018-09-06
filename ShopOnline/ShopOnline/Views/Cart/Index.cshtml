@@ -1,0 +1,70 @@
+﻿@model List<ShopOnline.Commond.CartSession>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var total = (double)(ViewBag.Total);
+}
+
+@section Script{
+    <link href="~/Resources/Client/css/CartItem.css" rel="stylesheet" />
+    <script src="~/Scripts/controller/cartController.js"></script>
+}
+@if (Model.Count() > 0)
+{
+    <div class="container">
+        <table id="cart" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="width:50%"><b>Product</b></th>
+                    <th style="width:10%"><b>Price</b></th>
+                    <th style="width:8%"><b>Quantity</b></th>
+                    <th style="width:22%" class="text-center"><b>Subtotal</b></th>
+                    <th style="width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs"><img src="@item.product.Image" alt="@item.product.MetaTtile" class="img-responsive" /></div>
+                                <div class="col-sm-10">
+                                    <h4 class="nomargin">@item.product.Name</h4>
+                                    <p>@item.product.Description</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">$@item.product.Price.GetValueOrDefault(0).ToString("N0")</td>
+                        <td data-th="Quantity">
+                            <input class="txtQuanlity" type="number" data-id="@item.product.ID" class="form-control text-center" value=@item.Quanlity>
+                        </td>
+                        <td data-th="Subtotal" class="text-center">$@((item.Quanlity * item.product.Price.GetValueOrDefault(0)).ToString("N0"))</td>
+                        <td class="actions" data-th="">
+                            <button id ="btnRefresh" type="button" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                            <button id ="btnDelete" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+                <tr class="visible-xs">
+                    <td class="text-center"><strong>Total: $@total</strong></td>
+                </tr>
+                <tr>
+                    <td><a href="/home" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td colspan="2" class="hidden-xs"></td>
+                    <td class="hidden-xs text-center"><strong>Total $@total</strong></td>
+                    <td><a href="/checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+}
+else
+{
+    <span> Have no item in your cart</span><br />
+    <a href="/home" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+}
+

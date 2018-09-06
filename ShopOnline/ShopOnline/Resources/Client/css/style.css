@@ -135,7 +135,7 @@ span.field-validation-error.text-danger {
 .wrapper-dropdown-2 .dropdown {
     position: absolute;
     top: 100%;
-    width:75%;
+    width:100%;
     right: 0px;
     z-index:1;
     background:#EEE;
@@ -1925,4 +1925,21 @@ span.field-validation-error.text-danger {
 	.signup input[type="submit"] {
 		width: 80px;
 	}
+
+    #project-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 1em;
+    }
+
+    #project-icon {
+        float: left;
+        height: 32px;
+        width: 32px;
+    }
+
+    #project-description {
+        margin: 0;
+        padding: 0;
+    }
 }

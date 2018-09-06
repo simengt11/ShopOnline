@@ -30,12 +30,12 @@ namespace ShopOnline.Areas.Admin.Controllers
                     userSession.Username = user.Username;
                     userSession.UserID = user.ID;
                     //add username to const
-                    Session.Add(Commond.CommondConstant.USER_SESSION, userSession);
+                    Session.Add(CommondConstant.USER_SESSION, userSession);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng!");
+                    ModelState.AddModelError("", "Username or password is incorrect!");
                 }
                
             }

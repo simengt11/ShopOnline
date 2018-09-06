@@ -1,4 +1,5 @@
 ﻿using Model.DAO;
+using ShopOnline.Commond;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,7 @@ namespace ShopOnline.Controllers
         [ChildActionOnly]
         public ActionResult _TopMenu()
         {
-            var dao = new MenuDAO();
-            var model = dao.GetMenuByMenuTypeID(1);
+            var model = (Commond.UserSession)Session[CommondConstant.USER_SESSION];
             return PartialView(model);
         }
 
@@ -38,6 +38,16 @@ namespace ShopOnline.Controllers
             var dao = new SlideDAO();
             var model = dao.GetAllSlide();
             return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult _ShoppingCart()
+        {
+            var cart = Session[CommondConstant.CART_SESSION];
+            var listCartItem = new List<CartSession>();
+            if (cart != null)
+                listCartItem = (List<CartSession>)cart;
+            return PartialView(listCartItem);
         }
 
         public void SetViewBag(int top)

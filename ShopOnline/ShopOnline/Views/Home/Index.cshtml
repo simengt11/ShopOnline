@@ -31,16 +31,16 @@
         <div class="section group">
             @foreach (var item in listNewProduct)
             {
-                var url = "/detail/" + item.MetaTtile + "-" + item.ID;
+                var url = "/preview/" + item.MetaTtile + "-" + item.ID;
                 <div class="grid_1_of_4 images_1_of_4">
-                    <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                    <a href="@url"><img src="@item.Image" alt="@item.Name" width="200" height="200"/></a>
                     <h2>@item.Name </h2>
                     <div class="price-details">
                         <div class="price-number">
                             <p><span class="rupees">$@item.Price</span></p>
                         </div>
                         <div class="add-cart">
-                            <h4><a href="@url">Add to Cart</a></h4>
+                            <h4><a href="/add-to-cart?productId=@item.ID&quanlity=1">Add to Cart</a></h4>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -61,16 +61,16 @@
         <div class="section group">
             @foreach (var item in listNewProduct)
             {
-                var url = "/detail/" + item.MetaTtile + "-" + item.ID;
+                var url = "/preview/" + item.MetaTtile + "-" + item.ID;
                 <div class="grid_1_of_4 images_1_of_4">
-                    <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                    <a href="@url"><img src="@item.Image" alt="@item.Name" width="200" height="200"/></a>
                     <h2>@item.Name </h2>
                     <div class="price-details">
                         <div class="price-number">
                             <p><span class="rupees">$@(item.Price.HasValue? item.Price.Value.ToString("N0"):"Contact")</span></p>
                         </div>
                         <div class="add-cart">
-                            <h4><a href="@url">Add to Cart</a></h4>
+                            <h4><a href="/add-to-cart?productId=@item.ID&quanlity=1">Add to Cart</a></h4>
                         </div>
                         <div class="clear"></div>
                     </div>

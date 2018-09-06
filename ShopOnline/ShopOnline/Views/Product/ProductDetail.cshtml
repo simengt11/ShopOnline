@@ -1,12 +1,15 @@
 ﻿@model Model.EF.Product
+
 @{
     ViewBag.Title = "ProductDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var catagoryList = (List<Model.EF.ProductCatagory>)ViewBag.CatagoryList;
     var relatedProductList = (List<Model.EF.Product>)ViewBag.RelatedProductList;
     var catagory = (Model.EF.ProductCatagory)ViewBag.Catagory;
+    var listMoreImage = (List<string>)ViewBag.ListMoreImage;
 
 }
+
 @section Script{
     <script src="~/Resources/Client/js/easyResponsiveTabs.js" type="text/javascript"></script>
     <link href="~/Resources/Client/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
@@ -44,19 +47,18 @@
                                 <div id="products">
                                     <div class="slides_container">
                                         <a href="#" target="_blank"><img src="@Model.Image" alt=" @Model.MetaTtile" /></a>
-                                        <a href="#" target="_blank"><img src="images/productslide-2.jpg" alt=" " /></a>
-                                        <a href="#" target="_blank"><img src="images/productslide-3.jpg" alt=" " /></a>
-                                        <a href="#" target="_blank"><img src="images/productslide-4.jpg" alt=" " /></a>
-                                        <a href="#" target="_blank"><img src="images/productslide-5.jpg" alt=" " /></a>
-                                        <a href="#" target="_blank"><img src="images/productslide-6.jpg" alt=" " /></a>
+                                        @foreach (var item in listMoreImage)
+                                        {
+                                            <a href="#" target="_blank"><img src="@item" alt=" " /></a>
+                                        }
+
                                     </div>
                                     <ul class="pagination">
-                                        <li><a href="#"><img src="@Model.Image" alt="@Model.MetaTtile " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-2.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-3.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-4.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-5.jpg" alt=" " /></a></li>
-                                        <li><a href="#"><img src="images/thumbnailslide-6.jpg" alt=" " /></a></li>
+                                        <li><a href="#" target="_blank"><img src="@Model.Image" alt="@Model.MetaTtile" " width="50" height="50" /></a></li>
+                                        @foreach (var item in listMoreImage)
+                                        {
+                                            <li><a href="#" target="_blank"><img src="@item" alt=" " width="50" height="50" /></a></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -76,7 +78,7 @@
                                     <li><a href="#"><img src="~/Resources/Client/images/twitter.png" alt="" /></a></li>
                                 </ul>
                             </div>
-                            <div class="button"><span><a href="#">Add to Cart</a></span></div>
+                            <div class="button"><span><a href="/add-to-cart?productId=@Model.ID&quanlity=1">Add to Cart</a></span></div>
                             <div class="clear"></div>
                         </div>
                         @*<div class="wish-list">
@@ -125,15 +127,19 @@
                 <div class="section group">
                     @foreach (var item in relatedProductList)
                     {
-                        <div class="grid_1_of_4 images_1_of_4">
-                            <a href="/preview/@item.MetaTtile-@item.ID"><img src="@item.Image" alt="@item.MetaTtile"></a>
-                            <div class="price" style="border:none">
-                                <div class="add-cart" style="float:none">
-                                    <h4><a href="#">Add to Cart</a></h4>
-                                </div>
-                                <div class="clear"></div>
+                    <div class="grid_1_of_4 images_1_of_4">
+                        <a href="/preview/@item.MetaTtile-@item.ID"><img src="@item.Image" alt="@item.MetaTtile" /></a>
+                        <h2>@item.Name </h2>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <p><span class="rupees">$@item.Price</span></p>
                             </div>
+                            <div class="add-cart">
+                                <h4><a href="/add-to-cart?productId=@item.ID&quanlity=1">Add to Cart</a></h4>
+                            </div>
+                            <div class="clear"></div>
                         </div>
+                    </div>
                     }
 
                 </div>

@@ -1,5 +1,3 @@
-E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\obj\Debug\Model.csprojAssemblyReference.cache
-E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\bin\Debug\Model.dll.config
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\bin\Debug\Model.dll
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\bin\Debug\Model.pdb
@@ -11,6 +9,8 @@ E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\bin\Debug\EntityFramework.xm
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\bin\Debug\EntityFramework.SqlServer.xml
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\bin\Debug\PagedList.xml
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\bin\Debug\PagedList.Mvc.xml
+E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\obj\Debug\Model.csprojAssemblyReference.cache
+E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\obj\Debug\Model.csproj.CopyComplete
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\obj\Debug\Model.dll
 E:\Documents\OnlineShop\ShopOnline\ShopOnline\Model\obj\Debug\Model.pdb

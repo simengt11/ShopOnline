@@ -8,23 +8,23 @@
 
 <div class="main">
     <div class="content">
-        <div class="section group">
-            <div class="col span_2_of_3">
+        <div class="section group row">
+            <div class="col">
                 <div class="contact-form">
                     <h2>Contact Us</h2>
                     @using (Html.BeginForm())
                     {
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div>
-                        <span><label>Name</label></span>
-                        <span>@Html.TextBoxFor(model => model.Name, new { @class = "textbox" })</span>
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                    </div>
-                    <div>
-                        <span><label>Phone</label></span>
-                        <span>@Html.TextBoxFor(model => model.Phone, new { @class = "textbox" })</span>
-                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                    </div>
+                        <div>
+                            <span><label>Name</label></span>
+                            <span>@Html.TextBoxFor(model => model.Name, new { @class = "textbox" })</span>
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <span><label>Phone</label></span>
+                            <span>@Html.TextBoxFor(model => model.Phone, new { @class = "textbox" })</span>
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
                         <div>
                             <span><label>E-mail</label></span>
                             <span>@Html.TextBoxFor(model => model.Address, new { @class = "textbox" })</span>
@@ -40,7 +40,7 @@
                     }
                 </div>
             </div>
-            <div class="col span_1_of_3">
+            <div class="col">
                 <div class="contact_info">
                     <h3>Find Us Here</h3>
                     <div class="map">
@@ -61,4 +61,4 @@
         </div>
     </div>
 </div>
- @*</div>*@
+@*</div>*@

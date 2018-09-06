@@ -24,24 +24,26 @@
             });
         });
 
-        $('.btn-active2').off('click').on('click', function (e) {
-            e.preventDefault();
+        $('.btn-active2').off('click').on('click', function () {
             var button = $(this);
             var id = button.data('id');
-            $.ajax({
-                url: "/Admin/Product/ChangeProductStatus/",
-                data: { productID: id },
-                dataType: "json",
-                type: "POST",
-                success: function (response) {
-                    if (response.status == true) {
-                        button.text('Active');
+            if (confirm("Do you want delete this product form your cart?")) {
+                $.ajax({
+                    url: "/Admin/Product/ChangeProductStatus/",
+                    data: { productID: id },
+                    dataType: "json",
+                    type: "POST",
+                    success: function (response) {
+                        if (response.status == true) {
+                            button.text('Active');
+                        }
+                        else {
+                            button.text('Lock');
+                        }
                     }
-                    else {
-                        button.text('Lock');
-                    }
-                }
-            });
+                });
+            }
+
         });
     },
 }

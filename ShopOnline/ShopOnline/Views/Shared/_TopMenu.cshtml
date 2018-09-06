@@ -1,9 +1,11 @@
-﻿@model List<Model.EF.Menu>
+﻿@model ShopOnline.Commond.UserSession
 <div class="account_desc">
     <ul>
-        @foreach (var item in Model)
+        <li><a href="/login" target="_self">Login</a></li>
+        <li><a href="/register" target="_blank">Register</a></li>
+        @if (Model != null)
         {
-            <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+            <li>Hello, @Model.Username,<a href="/logout" target="_self">Logout?</a></li>
         }
     </ul>
 </div>

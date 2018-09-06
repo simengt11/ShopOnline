@@ -1,0 +1,118 @@
+﻿@model ShopOnline.Models.CartInforModel
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var total = (double)ViewBag.Total;
+    var listCartItem = (List<ShopOnline.Commond.CartSession>)ViewBag.ListCartItem;
+    var login = TempData["Login"];
+}
+
+@if (login != null)
+{
+    <div class="row">
+        <!--Order Information-->
+        <div class="col">
+            <hr />
+            <h3>Order information</h3>
+            <hr />
+            @using (Html.BeginForm("checkout", "cart", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.ShipName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.ShipName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShipName, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.ShipAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.ShipAddress, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShipAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.ShipPhone, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.ShipPhone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShipPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.ShipEmail, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.ShipEmail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ShipEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <Center><button type="submit" class="btn btn-danger"><i class="fa fa-shopping-cart"> Checkout </i></button></Center>
+                    <a href="/home" class="btn btn-warning"><i class="fa fa-angle-left"></i>Back To Shopping</a>
+
+                </div>
+
+            }
+        </div>
+        <!--List product-->
+        <div class="col">
+            <hr />
+            <h3>Your cart</h3>
+            <hr />
+            <div class="container">
+                <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width:50%"><b>Product</b></th>
+                            <th style="width:10%"><b>Price</b></th>
+                            <th style="width:8%"><b>Quantity</b></th>
+                            <th style="width:22%" class="text-center"><b>Subtotal</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in listCartItem)
+                        {
+                            <tr>
+                                <td data-th="Product">
+                                    <div class="row">
+                                        <div class="col-sm-4 hidden-xs"><img src="@item.product.Image" alt="@item.product.MetaTtile" class="img-responsive" width="50" height="50" /></div>
+                                        <div class="col-sm-8">
+                                            <span>@item.product.Name</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-th="Price">$@item.product.Price.GetValueOrDefault(0).ToString("N0")</td>
+                                <td data-th="Quantity">
+                                    <input type="number" data-id="@item.product.ID" class="form-control text-center txtQuanlity" value=@item.Quanlity disabled>
+                                </td>
+                                <td data-th="Subtotal" class="text-center">$@((item.Quanlity * item.product.Price.GetValueOrDefault(0)).ToString("N0"))</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="hidden-xs text-center"><strong>Total $@total</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    </div>
+}
+else{ 
+    <div><span>Please login to checkout!</span></div>
+}
+
+
+

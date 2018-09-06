@@ -3,14 +3,8 @@
     <ul>
         @foreach (var item in Model)
         {
-            if (item.DisplayOrder == 1)
-            {
-                <li class="active"><a href="@item.Link" target="@item.Target">@item.Text</a></li>
-            }
-            else
-            {
-                <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
-            }
+
+            <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
         }
     </ul>
     <div class="clear"></div>

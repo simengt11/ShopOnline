@@ -1,11 +1,15 @@
 ﻿using Model.DAO;
 using Model.EF;
+using Newtonsoft.Json;
 using ShopOnline.Commond;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace ShopOnline.Areas.Admin.Controllers
 {
@@ -33,11 +37,21 @@ namespace ShopOnline.Areas.Admin.Controllers
             SetViewBag();
             if (ModelState.IsValid)
             {
-                var dao = new ProductDAO();
+                XElement xElement = new XElement("Images");
+                JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+                var listImage = javaScriptSerializer.Deserialize<List<string>>(product.MoreImages);
+                foreach (var item in listImage)
+                {
+                    xElement.Add(new XElement("Image", item.Replace(@"http://localhost:64737", "")));
+                }
+                product.MoreImages = xElement.ToString();
+
                 var UserSession = (UserSession)Session[CommondConstant.USER_SESSION];
                 product.CreatedBy = UserSession.Username;
 
-                if (dao.InsertProduct(product))
+                var dao = new ProductDAO();
+                var id = dao.InsertProduct(product);
+                if (id>0)
                 {
                     SetAlert("Add the new product sucessfully!", "success");
                     return RedirectToAction("Index", "Product");
@@ -55,6 +69,13 @@ namespace ShopOnline.Areas.Admin.Controllers
             SetViewBag();
             var dao = new ProductDAO();
             var product = dao.GetProductByID(id);
+            XElement xElement = XElement.Parse(product.MoreImages);
+            var listStringImage = new List<string>();
+            foreach (XElement item in xElement.Elements())
+            {
+                listStringImage.Add(item.Value);
+            }
+            product.MoreImages = JsonConvert.SerializeObject(listStringImage).ToString();
             return View(product);
         }
 
@@ -62,6 +83,15 @@ namespace ShopOnline.Areas.Admin.Controllers
         public ActionResult Edit(Product product)
         {
             SetViewBag();
+            XElement xElement = new XElement("Images");
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            var listImage = javaScriptSerializer.Deserialize<List<string>>(product.MoreImages);
+            foreach (var item in listImage)
+            {
+                xElement.Add(new XElement("Image", item.Replace(@"http://localhost:64737", "")));
+            }
+            product.MoreImages = xElement.ToString();
+
             var dao = new ProductDAO();
             var UserSession = (UserSession)Session[CommondConstant.USER_SESSION];
             product.ModifiedBy = UserSession.Username;

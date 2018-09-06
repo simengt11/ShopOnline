@@ -21,14 +21,14 @@
         @foreach (var item in Model)
         {
             <div class="grid_1_of_4 images_1_of_4">
-                <a href="/preview/@item.MetaTtile-@item.ID"><img src="@item.Image" alt="@item.MetaTtile" /></a>
+                <a href="/preview/@item.MetaTtile-@item.ID"><img src="@item.Image" alt="@item.MetaTtile" width="200" height="200"/></a>
                 <h2>@item.Name </h2>
                 <div class="price-details">
                     <div class="price-number">
                         <p><span class="rupees">$@item.Price</span></p>
                     </div>
                     <div class="add-cart">
-                        <h4><a href="/preview/@item.MetaTtile-@item.ID">Add to Cart</a></h4>
+                        <h4><a href="/add-to-cart?productId=@item.ID&quanlity=1">Add to Cart</a></h4>
                     </div>
                     <div class="clear"></div>
                 </div>

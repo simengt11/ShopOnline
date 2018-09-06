@@ -38,63 +38,65 @@
                         }
                     </div>
                 </div>
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Code</th>
-                            <th>Price</th>
-                            <th>Promotion Price</th>
-                            <th>Include VAT?</th>
-                            <th>Catagory</th>
-                            <th>Waranty</th>
-                            <th>Created Date</th>
-                            <th>Created By</th>
-                            <th>Status</th>
-                            <th>#</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                        <tr id="row_@item.ID">
+                <div class="scrollTatble">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image </th>
+                                <th>Price</th>
+                                <th>Promotion Price</th>
+                                <th>Include VAT?</th>
+                                <th>Catagory</th>
+                                <th>Created Date</th>
+                                <th>Created By</th>
+                                <th>Status</th>
 
-                            <td>@item.Name</td>
-                            <td>@item.Code</td>
-                            <td>@item.Price</td>
-                            <td>@item.PromotionPrice</td>
-                            <td><a href="#" class="btn-active1" data-id="@item.ID">@(item.IncludeVAT ? "Yes" : "No")</a></td>
-                            <td>
-                                @foreach (var temp in ViewBag.CatagoyList)
-                                {
-                                    if (item.CatalogyID == null)
-                                    {
-                                        @item.CatalogyID;
-                                    }
-                                    if (item.CatalogyID == temp.ID)
-                                    {
-                                        @temp.Name;
-                                        break;
-                                    }
-                                }
-                            </td>
-                            <td>@item.Waranty</td>
-                            <td>@item.CreatedDate</td>
-                            <td>@item.CreatedBy</td>
-                            <td><a href="#" class="btn-active2" data-id="@item.ID">@(item.Status ? "Active" : "Lock")</a></td>
-                            <td>
-                                <a href="/Admin/Product/Edit/@item.ID">Edit</a> &#124;
-                                @Ajax.ActionLink("Delete","Delete",new {@id=@item.ID },new AjaxOptions
-                           {
-                               Confirm="Do you want delete this record?",
-                               OnComplete="$(row_"+item.ID+").remove()",
-                               HttpMethod="Delete"
-                           })
-                            </td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.ID">
+
+                                    <td>@item.Name</td>
+                                    <td><img src="@item.Image" alt="" width="100" height="100"></td>
+                                    <td>@item.Price</td>
+                                    <td>@item.PromotionPrice</td>
+                                    <td><a href="#" class="btn-active1" data-id="@item.ID">@(item.IncludeVAT ? "Yes" : "No")</a></td>
+                                    <td>
+                                        @foreach (var temp in ViewBag.CatagoyList)
+                                        {
+                                            if (item.CatalogyID == null)
+                                            {
+                                                @item.CatalogyID;
+                                            }
+                                            if (item.CatalogyID == temp.ID)
+                                            {
+                                                @temp.Name;
+                                                break;
+                                            }
+                                        }
+                                    </td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.CreatedBy</td>
+                                    <td><a href="#" class="btn-active2" data-id="@item.ID">@(item.Status ? "Active" : "Lock")</a></td>
+                                    <td>
+                                        <a href="/Admin/Product/Edit/@item.ID">Edit</a> &#124;
+                                        @Ajax.ActionLink("Delete","Delete",new {@id=@item.ID },new AjaxOptions
+                                   {
+                                       Confirm="Do you want delete this record?",
+                                       OnComplete="$(row_"+item.ID+").remove()",
+                                       HttpMethod="Delete"
+                                   })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.searchString }))
                 <!-- /.table-responsive -->
             </div>
@@ -103,6 +105,13 @@
         <!-- /.panel -->
     </div>
     <!-- /.col-lg-12 -->
+    <!-- Button trigger modal -->
+    @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
+        </button>*@
+
+    <!-- Modal -->
+   
 </div>
 @section scripst{
     <script src="~/Scripts/controller/productController.js"></script>
